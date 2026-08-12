@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>DecimalMath</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>DecimalMath.Net</PackageId>
+    <Version>0.1.0</Version>
+    <Title>DecimalMath.NET</Title>
+    <Authors>Israel Iyonsi</Authors>
+    <Copyright>Copyright (c) 2026 Israel Iyonsi</Copyright>
+    <Description>Decimal-precision math for money: Sqrt, Pow, Exp, Log, trigonometry and penny-exact allocation for System.Decimal. No binary floating point round-trip. Zero external dependencies.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/IsraelIyonsi/DecimalMath.NET</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/IsraelIyonsi/DecimalMath.NET</PackageProjectUrl>
+    <PackageTags>decimal;math;money;finance;allocation;rounding;sqrt;pow;trigonometry</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>See https://github.com/IsraelIyonsi/DecimalMath.NET/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="DecimalMath.Net.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
