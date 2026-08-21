@@ -7,14 +7,14 @@ public class LogTests
     [Fact]
     public void LnOfOneIsZero()
     {
-        Assert.Equal(0m, DecimalMath.Ln(1m));
+        Assert.Equal(0m, DecimalMathOps.Ln(1m));
     }
 
     [Theory]
     [MemberData(nameof(LnReferenceCases))]
     public void LnMatchesDoubleReference(decimal input)
     {
-        decimal actual = DecimalMath.Ln(input);
+        decimal actual = DecimalMathOps.Ln(input);
         decimal expected = (decimal)Math.Log((double)input);
         ApproximateEqualityAssert.WithinRelativeTolerance(expected, actual, TestTolerances.DoubleOracleRelativeTolerance, TestTolerances.DoubleOracleAbsoluteFloor);
     }
@@ -38,7 +38,7 @@ public class LogTests
     [InlineData(0.01, -2)]
     public void Log10ReturnsExactValueForPowersOfTen(decimal input, decimal expected)
     {
-        decimal actual = DecimalMath.Log10(input);
+        decimal actual = DecimalMathOps.Log10(input);
         ApproximateEqualityAssert.WithinTolerance(expected, actual, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -49,7 +49,7 @@ public class LogTests
     [InlineData(0.5, -1)]
     public void Log2ReturnsExactValueForPowersOfTwo(decimal input, decimal expected)
     {
-        decimal actual = DecimalMath.Log2(input);
+        decimal actual = DecimalMathOps.Log2(input);
         ApproximateEqualityAssert.WithinTolerance(expected, actual, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -60,7 +60,7 @@ public class LogTests
     [InlineData(1, 7, 0)]
     public void LogWithArbitraryBaseReturnsExactValue(decimal x, decimal newBase, decimal expected)
     {
-        decimal actual = DecimalMath.Log(x, newBase);
+        decimal actual = DecimalMathOps.Log(x, newBase);
         ApproximateEqualityAssert.WithinTolerance(expected, actual, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -70,7 +70,7 @@ public class LogTests
     [InlineData(-100)]
     public void LnThrowsForZeroOrNegativeInput(decimal input)
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMath.Ln(input));
+        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMathOps.Ln(input));
     }
 
     [Theory]
@@ -79,6 +79,6 @@ public class LogTests
     [InlineData(-2)]
     public void LogThrowsForInvalidBase(decimal invalidBase)
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMath.Log(10m, invalidBase));
+        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMathOps.Log(10m, invalidBase));
     }
 }

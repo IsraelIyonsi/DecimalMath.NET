@@ -20,35 +20,35 @@ public class ConstantFixtureTests
     public void PiMatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("3.1415926535897932384626433833");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Pi, TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Pi, TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void EMatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("2.7182818284590452353602874714");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.E, TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.E, TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void Sqrt2MatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("1.4142135623730950488016887242");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Sqrt(2m), TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Sqrt(2m), TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void Ln2MatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("0.6931471805599453094172321215");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Ln(2m), TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Ln(2m), TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void Ln10MatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("2.3025850929940456840179914547");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Ln(10m), TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Ln(10m), TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
@@ -59,23 +59,23 @@ public class ConstantFixtureTests
         // a Taylor series at the reduced remainder) from E's own direct
         // sum-of-1/n! series, so this doubles as a cross-check between the two.
         decimal reference = decimal.Parse("2.7182818284590452353602874714");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Exp(1m), TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Exp(1m), TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void Exp5MatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("148.4131591025766034211155800406");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Exp(5m), TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Exp(5m), TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void SinAtPiOverSixMatchesExactAlgebraicValue()
     {
-        // sin(pi/6) = 1/2 exactly. Using DecimalMath.Pi (itself verified above)
+        // sin(pi/6) = 1/2 exactly. Using DecimalMathOps.Pi (itself verified above)
         // to build the input keeps this an end-to-end check of the Sin series.
         decimal reference = 0.5m;
-        decimal actual = DecimalMath.Sin(DecimalMath.Pi / 6m);
+        decimal actual = DecimalMathOps.Sin(DecimalMathOps.Pi / 6m);
         ApproximateEqualityAssert.WithinTolerance(reference, actual, TestTolerances.HighPrecisionFixtureTolerance);
     }
 
@@ -84,16 +84,16 @@ public class ConstantFixtureTests
     {
         // cos(pi/3) = 1/2 exactly.
         decimal reference = 0.5m;
-        decimal actual = DecimalMath.Cos(DecimalMath.Pi / 3m);
+        decimal actual = DecimalMathOps.Cos(DecimalMathOps.Pi / 3m);
         ApproximateEqualityAssert.WithinTolerance(reference, actual, TestTolerances.HighPrecisionFixtureTolerance);
     }
 
     [Fact]
     public void SinAtPiOverFourMatchesArbitraryPrecisionReference()
     {
-        // sin(pi/4) = sqrt(2)/2, referenced independently of DecimalMath.Sqrt.
+        // sin(pi/4) = sqrt(2)/2, referenced independently of DecimalMathOps.Sqrt.
         decimal reference = decimal.Parse("0.7071067811865475244008443621");
-        decimal actual = DecimalMath.Sin(DecimalMath.Pi / 4m);
+        decimal actual = DecimalMathOps.Sin(DecimalMathOps.Pi / 4m);
         ApproximateEqualityAssert.WithinTolerance(reference, actual, TestTolerances.HighPrecisionFixtureTolerance);
     }
 
@@ -101,6 +101,6 @@ public class ConstantFixtureTests
     public void AtanAtOneHalfMatchesArbitraryPrecisionReference()
     {
         decimal reference = decimal.Parse("0.4636476090008061162142562315");
-        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMath.Atan(0.5m), TestTolerances.HighPrecisionFixtureTolerance);
+        ApproximateEqualityAssert.WithinTolerance(reference, DecimalMathOps.Atan(0.5m), TestTolerances.HighPrecisionFixtureTolerance);
     }
 }

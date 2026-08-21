@@ -8,7 +8,7 @@ public class IdentityTests
     [MemberData(nameof(PositiveValues))]
     public void ExpOfLnReturnsOriginalValue(decimal x)
     {
-        decimal roundTripped = DecimalMath.Exp(DecimalMath.Ln(x));
+        decimal roundTripped = DecimalMathOps.Exp(DecimalMathOps.Ln(x));
         ApproximateEqualityAssert.WithinTolerance(x, roundTripped, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -16,7 +16,7 @@ public class IdentityTests
     [MemberData(nameof(ExpSafeValues))]
     public void LnOfExpReturnsOriginalValue(decimal x)
     {
-        decimal roundTripped = DecimalMath.Ln(DecimalMath.Exp(x));
+        decimal roundTripped = DecimalMathOps.Ln(DecimalMathOps.Exp(x));
         ApproximateEqualityAssert.WithinTolerance(x, roundTripped, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -24,7 +24,7 @@ public class IdentityTests
     [MemberData(nameof(NonNegativeValues))]
     public void SqrtSquaredReturnsOriginalValue(decimal x)
     {
-        decimal root = DecimalMath.Sqrt(x);
+        decimal root = DecimalMathOps.Sqrt(x);
         decimal squared = root * root;
         ApproximateEqualityAssert.WithinTolerance(x, squared, TestTolerances.DecimalIdentityTolerance);
     }
@@ -33,8 +33,8 @@ public class IdentityTests
     [MemberData(nameof(NonNegativeValues))]
     public void PowOneHalfEqualsSqrt(decimal x)
     {
-        decimal viaPow = DecimalMath.Pow(x, 0.5m);
-        decimal viaSqrt = DecimalMath.Sqrt(x);
+        decimal viaPow = DecimalMathOps.Pow(x, 0.5m);
+        decimal viaSqrt = DecimalMathOps.Sqrt(x);
         ApproximateEqualityAssert.WithinTolerance(viaSqrt, viaPow, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -42,7 +42,7 @@ public class IdentityTests
     [MemberData(nameof(RealValues))]
     public void CbrtCubedReturnsOriginalValue(decimal x)
     {
-        decimal root = DecimalMath.Cbrt(x);
+        decimal root = DecimalMathOps.Cbrt(x);
         decimal cubed = root * root * root;
         ApproximateEqualityAssert.WithinTolerance(x, cubed, TestTolerances.DecimalIdentityTolerance);
     }
@@ -51,8 +51,8 @@ public class IdentityTests
     [MemberData(nameof(AngleValues))]
     public void SinSquaredPlusCosSquaredEqualsOne(decimal angle)
     {
-        decimal sin = DecimalMath.Sin(angle);
-        decimal cos = DecimalMath.Cos(angle);
+        decimal sin = DecimalMathOps.Sin(angle);
+        decimal cos = DecimalMathOps.Cos(angle);
         decimal sumOfSquares = sin * sin + cos * cos;
         ApproximateEqualityAssert.WithinTolerance(1m, sumOfSquares, TestTolerances.DecimalIdentityTolerance);
     }
@@ -61,7 +61,7 @@ public class IdentityTests
     [MemberData(nameof(NarrowAngleValues))]
     public void AsinOfSinReturnsOriginalAngle(decimal angle)
     {
-        decimal roundTripped = DecimalMath.Asin(DecimalMath.Sin(angle));
+        decimal roundTripped = DecimalMathOps.Asin(DecimalMathOps.Sin(angle));
         ApproximateEqualityAssert.WithinTolerance(angle, roundTripped, TestTolerances.DecimalIdentityTolerance);
     }
 
@@ -69,7 +69,7 @@ public class IdentityTests
     [MemberData(nameof(NarrowAngleValues))]
     public void AtanOfTanReturnsOriginalAngle(decimal angle)
     {
-        decimal roundTripped = DecimalMath.Atan(DecimalMath.Tan(angle));
+        decimal roundTripped = DecimalMathOps.Atan(DecimalMathOps.Tan(angle));
         ApproximateEqualityAssert.WithinTolerance(angle, roundTripped, TestTolerances.DecimalIdentityTolerance);
     }
 

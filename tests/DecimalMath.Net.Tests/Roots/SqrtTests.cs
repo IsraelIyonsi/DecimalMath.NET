@@ -16,7 +16,7 @@ public class SqrtTests
     [InlineData(1000000, 1000)]
     public void ReturnsExactValueForPerfectSquares(decimal input, decimal expected)
     {
-        decimal actual = DecimalMath.Sqrt(input);
+        decimal actual = DecimalMathOps.Sqrt(input);
         Assert.Equal(expected, actual);
     }
 
@@ -24,7 +24,7 @@ public class SqrtTests
     [MemberData(nameof(IrrationalCases))]
     public void MatchesDoubleReferenceForIrrationalInputs(decimal input)
     {
-        decimal actual = DecimalMath.Sqrt(input);
+        decimal actual = DecimalMathOps.Sqrt(input);
         decimal expected = (decimal)Math.Sqrt((double)input);
         ApproximateEqualityAssert.WithinRelativeTolerance(expected, actual, TestTolerances.DoubleOracleRelativeTolerance, TestTolerances.DoubleOracleAbsoluteFloor);
     }
@@ -46,6 +46,6 @@ public class SqrtTests
     [InlineData(-1000000)]
     public void ThrowsForNegativeInput(decimal input)
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMath.Sqrt(input));
+        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMathOps.Sqrt(input));
     }
 }

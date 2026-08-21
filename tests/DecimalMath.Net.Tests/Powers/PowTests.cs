@@ -20,7 +20,7 @@ public class PowTests
     [InlineData(1, 1000000, 1)]
     public void ReturnsExactValueForIntegerExponents(decimal x, decimal y, decimal expected)
     {
-        decimal actual = DecimalMath.Pow(x, y);
+        decimal actual = DecimalMathOps.Pow(x, y);
         Assert.Equal(expected, actual);
     }
 
@@ -28,7 +28,7 @@ public class PowTests
     [MemberData(nameof(NonIntegerExponentCases))]
     public void MatchesDoubleReferenceForNonIntegerExponents(decimal x, decimal y)
     {
-        decimal actual = DecimalMath.Pow(x, y);
+        decimal actual = DecimalMathOps.Pow(x, y);
         decimal expected = (decimal)Math.Pow((double)x, (double)y);
         ApproximateEqualityAssert.WithinRelativeTolerance(expected, actual, TestTolerances.DoubleOracleRelativeTolerance, TestTolerances.DoubleOracleAbsoluteFloor);
     }
@@ -49,8 +49,8 @@ public class PowTests
         decimal[] inputs = { 2m, 3m, 100m, 0.5m, 12345.6789m };
         foreach (decimal x in inputs)
         {
-            decimal viaPow = DecimalMath.Pow(x, 0.5m);
-            decimal viaSqrt = DecimalMath.Sqrt(x);
+            decimal viaPow = DecimalMathOps.Pow(x, 0.5m);
+            decimal viaSqrt = DecimalMathOps.Sqrt(x);
             ApproximateEqualityAssert.WithinTolerance(viaSqrt, viaPow, TestTolerances.DecimalIdentityTolerance);
         }
     }
@@ -58,12 +58,12 @@ public class PowTests
     [Fact]
     public void ThrowsWhenZeroRaisedToNegativePower()
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMath.Pow(0m, -1m));
+        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMathOps.Pow(0m, -1m));
     }
 
     [Fact]
     public void ThrowsWhenNegativeBaseRaisedToNonIntegerPower()
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMath.Pow(-4m, 0.5m));
+        Assert.Throws<ArgumentOutOfRangeException>(() => DecimalMathOps.Pow(-4m, 0.5m));
     }
 }

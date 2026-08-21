@@ -46,8 +46,17 @@ decimal principal = 5000.00m;
 decimal annualRate = 0.045m;
 int years = 10;
 
-decimal futureValue = principal * DecimalMath.Pow(1m + annualRate, years);
+decimal futureValue = principal * DecimalMathOps.Pow(1m + annualRate, years);
 // computed entirely in decimal arithmetic, no double in the pipeline
+```
+
+### Square root that stays in decimal
+
+```csharp
+using DecimalMath;
+
+decimal rootTwo = DecimalMathOps.Sqrt(2m);
+// 1.4142135623730950488016887242, no double round-trip
 ```
 
 ## What is in the box

@@ -25,7 +25,7 @@ namespace DecimalMath;
 /// cut short.
 /// </para>
 /// </remarks>
-public static partial class DecimalMath
+public static partial class DecimalMathOps
 {
     private const int SeriesMaxTerms = 300;
     private const int NewtonMaxIterations = 100;

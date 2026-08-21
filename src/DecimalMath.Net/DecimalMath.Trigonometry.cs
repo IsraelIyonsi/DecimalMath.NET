@@ -1,11 +1,11 @@
 namespace DecimalMath;
 
 /// <summary>
-/// Trigonometric members of <see cref="DecimalMath"/>. Split into its own file
+/// Trigonometric members of <see cref="DecimalMathOps"/>. Split into its own file
 /// because it is a distinct responsibility from roots, powers and logarithms,
 /// even though both halves belong to the same public static surface.
 /// </summary>
-public static partial class DecimalMath
+public static partial class DecimalMathOps
 {
     /// <summary>
     /// Computes the sine of <paramref name="x"/>, an angle expressed in radians.

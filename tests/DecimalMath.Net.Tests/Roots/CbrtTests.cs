@@ -15,7 +15,7 @@ public class CbrtTests
     [InlineData(1000000, 100)]
     public void ReturnsExactValueForPerfectCubes(decimal input, decimal expected)
     {
-        decimal actual = DecimalMath.Cbrt(input);
+        decimal actual = DecimalMathOps.Cbrt(input);
         Assert.Equal(expected, actual);
     }
 
@@ -23,7 +23,7 @@ public class CbrtTests
     [MemberData(nameof(IrrationalCases))]
     public void MatchesDoubleReferenceForIrrationalInputs(decimal input)
     {
-        decimal actual = DecimalMath.Cbrt(input);
+        decimal actual = DecimalMathOps.Cbrt(input);
         decimal expected = (decimal)Math.Cbrt((double)input);
         ApproximateEqualityAssert.WithinRelativeTolerance(expected, actual, TestTolerances.DoubleOracleRelativeTolerance, TestTolerances.DoubleOracleAbsoluteFloor);
     }

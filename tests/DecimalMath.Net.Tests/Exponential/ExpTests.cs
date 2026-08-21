@@ -7,14 +7,14 @@ public class ExpTests
     [Fact]
     public void ExpOfZeroIsOne()
     {
-        Assert.Equal(1m, DecimalMath.Exp(0m));
+        Assert.Equal(1m, DecimalMathOps.Exp(0m));
     }
 
     [Theory]
     [MemberData(nameof(ReferenceCases))]
     public void MatchesDoubleReference(decimal input)
     {
-        decimal actual = DecimalMath.Exp(input);
+        decimal actual = DecimalMathOps.Exp(input);
         decimal expected = (decimal)Math.Exp((double)input);
         ApproximateEqualityAssert.WithinRelativeTolerance(expected, actual, TestTolerances.DoubleOracleRelativeTolerance, TestTolerances.DoubleOracleAbsoluteFloor);
     }
@@ -35,6 +35,6 @@ public class ExpTests
     [Fact]
     public void ExpOfOneMatchesEulersNumber()
     {
-        ApproximateEqualityAssert.WithinTolerance(DecimalMath.E, DecimalMath.Exp(1m), TestTolerances.DecimalIdentityTolerance);
+        ApproximateEqualityAssert.WithinTolerance(DecimalMathOps.E, DecimalMathOps.Exp(1m), TestTolerances.DecimalIdentityTolerance);
     }
 }
